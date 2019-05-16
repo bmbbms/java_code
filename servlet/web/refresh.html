@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta http-equiv="refresh" content="3;url=/refresh2.html">
+<head>
+    <meta charset="UTF-8">
+    <title>refresh</title>
+</head>
+<body>
+
+<span id="a">3</span>秒后跳到refresh2
+</body>
+
+
+<script type="text/javascript">
+
+    onload=function () {
+        setInterval(changS,1000)
+        
+    }
+
+    i = 3
+    function changS() {
+        var obj = document.getElementById("a")
+        obj.innerHTML = --i
+
+
+    }
+</script>
+</html>
