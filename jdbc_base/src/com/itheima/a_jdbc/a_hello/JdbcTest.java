@@ -10,10 +10,8 @@
  */
 package com.itheima.a_jdbc.a_hello;
 
-import com.itheima.jdbc_util.JdbcUtil;
 import com.itheima.jdbc_util.JdbcUtilNew;
-import com.sun.org.apache.regexp.internal.RE;
-import jdk.nashorn.internal.scripts.JD;
+
 import org.junit.Test;
 
 import java.sql.*;

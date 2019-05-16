@@ -1,15 +1,10 @@
 package com.itheima.a_jdbc.a_hello;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
+import com.itheima.utils.JdbcUtils;
 import org.junit.Test;
 
-import com.itheima.utils.JdbcUtils;
-import com.mysql.jdbc.Driver;
+import java.sql.*;
+
 
 public class Hello {
 	@Test
@@ -21,8 +16,7 @@ public class Hello {
 	public void f2() throws Exception{
 		//注册驱动
 		//Class.forName("com.mysql.jdbc.Driver");
-		DriverManager.registerDriver(new Driver());
-		
+
 		//获取连接 		ctrl+o 整理包
 		Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc", "root", "1234");
 		
