@@ -10,7 +10,6 @@
  */
 package com.itheima.jdbc_util;
 
-import com.sun.org.apache.regexp.internal.RE;
 
 import java.sql.*;
 
