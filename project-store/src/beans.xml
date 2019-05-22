@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+	<bean id="CategoryService" class="com.yangsheng.service.impl.CategoryServiceImpl"></bean>
+
+	<bean id="UserService" class="com.yangsheng.service.impl.UserServiceImpl"></bean>
+
+   <!--<bean id="ProductDao" class="com.yangsheng.dao.impl.ProductDaoImpl"/>-->
+   <bean id="UserDao" class="com.yangsheng.dao.impl.UserDaoImpl"/>
+   <bean id="CategoryDao" class="com.yangsheng.dao.impl.CategoryDaoImpl"/>
+</beans>

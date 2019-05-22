@@ -25,12 +25,8 @@ public class AccountServlet extends javax.servlet.http.HttpServlet {
         String toUser = request.getParameter("to");
         String money = request.getParameter("money");
 
-        try {
-//            new UserService().account(fromUser,toUser,money);
-            new UserServiceTl().account(fromUser,toUser,money);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        //            new UserService().account(fromUser,toUser,money);
+        new UserServiceTl().account(fromUser,toUser,money);
 
     }
 
