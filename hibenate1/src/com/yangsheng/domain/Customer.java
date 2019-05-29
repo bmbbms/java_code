@@ -1,5 +1,8 @@
 package com.yangsheng.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Customer {
 	
 	/*
@@ -24,6 +27,8 @@ public class Customer {
 	private String cust_linkman;
 	private String cust_phone;
 	private String cust_mobile;
+
+	private Set<LinkMan> LinkMans = new HashSet<LinkMan>();
 	public Long getCust_id() {
 		return cust_id;
 	}
@@ -76,8 +81,13 @@ public class Customer {
 	public String toString() {
 		return "Customer [cust_id=" + cust_id + ", cust_name=" + cust_name + "]";
 	}
-	
-	
-	
 
+
+	public Set<LinkMan> getLinkMans() {
+		return LinkMans;
+	}
+
+	public void setLinkMans(Set<LinkMan> linkMans) {
+		LinkMans = linkMans;
+	}
 }
