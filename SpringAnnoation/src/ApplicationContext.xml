@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"
+>
+<context:component-scan base-package="service"/>
+    <aop:aspectj-autoproxy/>
+
+<!--<aop:config>-->
+    <!--<aop:aspect ref="aspectxml">-->
+        <!--<aop:around method="log"  pointcut="execution(public * service.UserDao.save())"></aop:around>-->
+    <!--</aop:aspect>-->
+<!--</aop:config>-->
+		<!--内置连接池配置-->
+    		<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		    	<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		    	<property name="url" value="jdbc:mysql:///spring?characterEncoding=utf-8"/>
+		    	<property name="username" value="root"/>
+		    	<property name="password" value="root"/>
+		    </bean>
+		<!--dbcp 连接池配置-->
+		<bean id="dataSource1" class="org.apache.commons.dbcp.BasicDataSource">
+		    	<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		    	<property name="url" value="jdbc:mysql:///spring?characterEncoding=utf-8"/>
+		    	<property name="username" value="root"/>
+		    	<property name="password" value="root"/>
+		    </bean>
+		<!--c3p0 连接池配置-->
+		<bean id="dataSource2" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		    	<property name="driverClass" value="com.mysql.jdbc.Driver"/>
+		    	<property name="jdbcUrl" value="jdbc:mysql:///spring?characterEncoding=utf-8"/>
+		    	<property name="user" value="root"/>
+		    	<property name="password" value="root"/>
+		    </bean>
+
+	<!--配置jdbc模板类-->
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		    	<property name="dataSource" ref="dataSource2"/>
+		    </bean>
+</beans>

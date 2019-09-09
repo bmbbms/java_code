@@ -27,6 +27,7 @@ public class UseSpring {
         ClassPathXmlApplicationContext ac = new ClassPathXmlApplicationContext("ApplicationContext.xml");
         UserService userService = (UserService) ac.getBean("userService");
         userService.sayHello();
+        userService.save();
 
     }
 }

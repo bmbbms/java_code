@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.UserMapper">
+       <!--通过id查找-->
+    <select id="findUserById" parameterType="int" resultType="pojo.User">
+		select * from user where id = #{id}
+	</select>
+
+
+   <insert id="insertUser" parameterType="pojo.User">
+--         获取主键
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+        select LAST_INSERT_ID()
+    </selectKey>
+
+    INSERT INTO user(username,birthday,sex,address) VALUES (#{username},#{birthday},#{sex},#{address})
+    </insert>
+
+
+    <select id="findByUsernameAndSex" parameterType="pojo.User" resultType="pojo.User">
+        SELECT  * from user
+        <include refid="username_sex"/>
+    </select>
+
+    <sql id="username_sex">
+            <where>
+            <if test="username != null and username != '' ">
+                And username LIKE '%${username}%'
+            </if>
+
+             <if test="sex != null and sex != '' ">
+                And sex=#{sex}
+            </if>
+        </where>
+    </sql>
+
+    <select id="findByIds"  resultType="pojo.User">
+        SELECT * from USER
+        <where>
+            <if test="list != null">
+                <foreach collection="list" open="id in (" close=")" item="id" separator=",">
+                    #{id}
+                </foreach>
+            </if>
+        </where>
+
+    </select>
+</mapper>

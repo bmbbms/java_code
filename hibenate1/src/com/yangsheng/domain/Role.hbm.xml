@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC 
     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<hibernate-mapping package="cn.itcast.domain" >
+<hibernate-mapping package="com.yangsheng.domain" >
 	<class name="Role" table="sys_role" >
 		<id name="role_id"  >
 			<generator class="native"></generator>
@@ -18,7 +18,7 @@
 			 一般谁来放弃要看业务方向. 例如录入员工时,需要为员工指定所属角色.
 			 那么业务方向就是由员工维护角色. 角色不需要维护与员工关系.角色放弃维护
 		 -->		
-		<set name="users" table="sys_user_role" inverse="true" >
+		<set name="users" table="sys_user_role"   cascade="save-update">
 			<key column="role_id" ></key>
 			<many-to-many class="User" column="user_id" ></many-to-many>
 		</set>

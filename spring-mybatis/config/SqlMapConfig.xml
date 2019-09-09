@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 和spring整合后 environments配置将废除-->
+
+
+    <!--放置mapper映射文件-->
+<mappers>
+		<mapper resource="Users.xml"/>
+
+        <!--<mapper class="mapper.UserMapper" />-->
+        <!--包扫描mapper-->
+
+</mappers>
+
+</configuration>

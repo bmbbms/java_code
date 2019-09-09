@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yangsheng.mapper.UserMapper" >
+
+    <select id="findById" resultType="com.yangsheng.pojo.User" parameterType="int">
+        SELECT * from USER WHERE id =#{id}
+    </select>
+
+    <select id="findByUsernameAndSex" parameterType="com.yangsheng.pojo.User" resultType="com.yangsheng.pojo.User">
+        SELECT  * from USER
+        <where>
+            <if test="username != null and username != ''">
+                and username like '%${username}%'
+            </if>
+
+             <if test="sex != null and sex != ''">
+                and sex=#{sex}
+            </if>
+        </where>
+    </select>
+
+    <select id="findByIds" resultType="com.yangsheng.pojo.User" parameterType="java.util.List">
+        SELECT * from USER
+        <where>
+            <if test="list.size()>0">
+                <foreach collection="list" separator="," open="id in (" close=")" item="id">
+                    #{id}
+                </foreach>
+            </if>
+
+        </where>
+    </select>
+    <resultMap id="orderuser" type="com.yangsheng.pojo.Orders">
+        <id column="id" property="id"></id>
+
+        <result column="user_id" property="user_id"></result>
+        <result column="createtime" property="createtime"></result>
+        <result column="number" property="number"></result>
+        <result column="note" property="note"></result>
+        <association property="user" javaType="com.yangsheng.pojo.User">
+           <id column="id" property="id"></id>
+
+                 <result column="username" property="username"></result>
+                 <result column="sex" property="sex"></result>
+                 <result column="birthday" property="birthday"></result>
+                 <result column="address" property="address"></result>
+
+        </association>
+    </resultMap>
+
+    <select id="findOrdersandUser" resultMap="orderuser">
+        SELECT a.*, b.id uid,username,birthday,sex,address
+        FROM orders a ,USER b
+        WHERE a.user_id = b.id
+    </select>
+
+</mapper>

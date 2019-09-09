@@ -3,5 +3,53 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="userService" class="com.yangsheng.service.Impl.UserServiceImpl"></bean>
+    <bean id="userService" class="com.yangsheng.service.Impl.UserServiceImpl1" >
+        <constructor-arg name="userDao" ref="userDao"></constructor-arg>
+        <constructor-arg name="name" value="123"></constructor-arg>
+
+    </bean>
+
+    <bean id="userDao" class="com.yangsheng.dao.Impl.UserDaoImpl">
+
+    </bean>
+
+    <bean id="listDemo" class="com.yangsheng.service.Impl.ListDemoImpl">
+        <property name="arr">
+            <list>
+                <value>arr1</value>
+                <value>arr2</value>
+                <value>arr3</value>
+            </list>
+        </property>
+        <property name="e">
+            <list>
+                <value>list1</value>
+                <value>list2</value>
+                <value>list3</value>
+            </list>
+        </property>
+
+        <property name="set">
+            <list>
+                <value>set1</value>
+                <value>set2</value>
+                <value>set3</value>
+            </list>
+        </property>
+
+        <property name="map">
+            <map>
+                <entry key="map1" value="abc1"></entry>
+                <entry key="map2" value="abc2"></entry>
+                <entry key="map3" value="abc3"></entry>
+            </map>
+        </property>
+
+        <property name="pro">
+            <props>
+                <prop key="username" >root</prop>
+                <prop key="password" >1234</prop>
+            </props>
+        </property>
+    </bean>
 </beans>

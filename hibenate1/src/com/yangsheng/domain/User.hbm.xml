@@ -2,7 +2,7 @@
 <!DOCTYPE hibernate-mapping PUBLIC 
     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<hibernate-mapping package="cn.itcast.domain" >
+<hibernate-mapping package="com.yangsheng.domain" >
 	<class name="User" table="sys_user" >
 		<id name="user_id"  >
 			<generator class="native"></generator>
@@ -28,7 +28,7 @@
 		 	结论: cascade简化代码书写.该属性使不使用无所谓. 建议要用只用save-update.
 		 		 如果使用delete操作太过危险.尤其在多对多中.不建议使用.
 		 			 -->
-		<set name="roles" table="sys_user_role" cascade="save-update" >
+		<set name="roles" table="sys_user_role" inverse="true" >
 			<key column="user_id" ></key>
 			<many-to-many class="Role" column="role_id" ></many-to-many>
 		</set>

@@ -10,6 +10,7 @@
  */
 package com.yangsheng.service.Impl;
 
+import com.yangsheng.dao.UserDao;
 import com.yangsheng.service.UserService;
 
 /**
@@ -22,8 +23,26 @@ import com.yangsheng.service.UserService;
  */
 public class UserServiceImpl implements UserService {
 
+
+    private UserDao userDao;
+    private String name;
+
     @Override
     public void sayHello() {
-        System.out.println("say hello");
+        System.out.println("say hello" +name);
+    }
+
+    public void setUserDao(UserDao userDao) {
+        this.userDao = userDao;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public void save(){
+        userDao.save();
+        System.out.println("业务层");
     }
 }
